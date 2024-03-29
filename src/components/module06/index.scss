@@ -1,0 +1,38 @@
+.md6 {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 3px 5px;
+  font-size: 10px;
+  font-family: '宋体', sans-serif;
+}
+
+.md6-header {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 5px 0;
+  color: black;
+  place-items: center;
+  background: linear-gradient(to bottom, #1cc9c7 50%, #3ea7ef);
+}
+
+.md6-main {
+  display: grid;
+  flex: 1;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  color: #fff;
+
+  .md6-main-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .md6-main-item:nth-child(2n) {
+    background-color: rgba(31, 66, 126, 50%);
+  }
+}

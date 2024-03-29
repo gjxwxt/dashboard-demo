@@ -1,0 +1,81 @@
+.md3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.md3-item {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  font-size: 10px;
+}
+
+.md3-item:nth-child(2n) {
+  background-color: rgba(45, 87, 146, 50%);
+}
+
+.md3-item-progress {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  // width: 65%;
+  height: 100%;
+}
+
+.md3-item-progress-bar {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 14px;
+  padding: 2px;
+  border: gray solid 1px;
+  border-radius: 10px;
+}
+
+.md3-item-progress-bar-inner {
+  width: 0; /* 初始宽度为0，根据进度动态设置宽度 */
+  height: 100%;
+  background: linear-gradient(
+    to bottom right,
+    rgb(36, 249, 226) 0%,
+    rgb(41, 229, 230) 8.33%,
+    rgb(35, 241, 225) 16.67%,
+    rgb(46, 216, 231) 25%,
+    rgb(44, 223, 230) 33.33%,
+    rgb(53, 195, 235) 41.67%,
+    rgb(52, 201, 234) 50%,
+    rgb(60, 175, 237) 58.33%,
+    rgb(59, 180, 237) 66.67%,
+    rgb(50, 156, 232) 75%,
+    rgb(64, 166, 240) 83.33%,
+    rgb(58, 152, 219) 91%,
+    rgb(37, 124, 186) 100%
+  ); /* 定义渐变颜色和位置 */
+
+  border-radius: 10px;
+}
+
+.md3-item-name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12%;
+  color: #fff;
+  font-weight: 200;
+  font-size: 10px;
+}
+
+.md3-item-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 12%;
+  color: rgb(33, 218, 212);
+  font-weight: 600;
+}

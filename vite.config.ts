@@ -1,7 +1,7 @@
 /// <reference types="vitest" />
-import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import { defineConfig } from 'vite';
 import viteEslint from 'vite-plugin-eslint';
 
 const envDir = path.resolve(process.cwd(), './env');
@@ -25,7 +25,7 @@ export default defineConfig({
   css: {
     // 预处理器配置项
     preprocessorOptions: {
-      less: {
+      sass: {
         math: 'always',
         globalVars: {
           //配置全局变量

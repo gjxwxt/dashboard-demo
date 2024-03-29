@@ -1,45 +1,76 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import './App.css';
+// import { useState } from 'react';
+import title from '@/assets/title.png';
+import Module01 from '@/components/module01';
+import Module02 from '@/components/module02';
+import Module03 from '@/components/module03';
+import Module04 from '@/components/module04';
+import Module05 from '@/components/module05';
+import Module06 from '@/components/module06';
+
+import SvgMap from '@/components/weifangMap';
+import { Suspense, useEffect, useRef, useState } from 'react';
+import './App.scss';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const titleRef = useRef<HTMLDivElement>(null); // header图
+
+  const [isShow, setIsShow] = useState(false); // 是否显示模块
+
+  const onSecondPlay = () => {
+    titleRef.current?.setAttribute('style', 'opacity: 1');
+    setIsShow(true);
+  };
+
+  const modules = [
+    { title: '大屏可视化小模块标题01', body: Module01 },
+    { title: '大屏可视化小模块标题02', body: Module02 },
+    { title: '大屏可视化小模块标题03', body: Module03 },
+    { title: '大屏可视化小模块标题04', body: Module04 },
+    { title: '大屏可视化小模块标题05', body: Module05 },
+    { title: '大屏可视化小模块标题06', body: Module06 }
+  ];
+
+  // 修改rem
+  function onResize() {
+    document.documentElement.style.fontSize = document.documentElement.clientWidth / 120 + 'px';
+  }
+
+  useEffect(() => {
+    titleRef.current?.setAttribute('style', 'opacity: 0');
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
   return (
-    <>
-      <div>
-        <a
-          href="https://vitejs.dev"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <img
-            src={viteLogo}
-            className="logo"
-            alt="Vite logo"
-          />
-        </a>
-        <a
-          href="https://react.dev"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <img
-            src={reactLogo}
-            className="logo react"
-            alt="React logo"
-          />
-        </a>
+    <div className="container">
+      <SvgMap
+        onReadyPlay={() => console.log('ready')}
+        onSecondPlay={onSecondPlay}
+      ></SvgMap>
+      <div
+        className="box-title"
+        ref={titleRef}
+      >
+        <img
+          className="box-title-img"
+          src={title}
+        ></img>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount(count => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </>
+      {isShow &&
+        modules.map((module, index) => (
+          <div
+            key={index}
+            className={`box-title-item box-title-item_${index + 1}`}
+          >
+            <div className="box-title-item_header">
+              <span data-text={module.title}>{module.title}</span>
+            </div>
+            <div className="box-title-item_body">
+              <Suspense fallback={<div>Loading...</div>}>{module.body && <module.body />}</Suspense>
+            </div>
+          </div>
+        ))}
+    </div>
   );
 }
 

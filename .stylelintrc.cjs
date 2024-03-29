@@ -28,7 +28,9 @@ module.exports = {
     'color-function-notation': 'legacy', // 设置颜色rgb等的写法，逗号相隔，a { color: rgba(12, 122, 231, 0.2) }
     'color-hex-case': 'lower', // 16进制颜色小写
     'string-quotes': 'single', // 单引号
-    'number-leading-zero': 'never' // 小数不带0
+    // 'number-leading-zero': 'never', // 小数不带0
+    'selector-class-pattern': null, // css class中允许出现下斜杠_
+    'property-no-vendor-prefix': null
   },
 
   // 忽略以下文件的检查

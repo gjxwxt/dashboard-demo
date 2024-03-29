@@ -1,0 +1,139 @@
+@font-face {
+  font-family: tr-font;
+  src: url('@/assets/zaozigongfangliheiti.woff2');
+}
+
+.box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  aspect-ratio: 1920 / 1080;
+}
+
+.box-title {
+  position: absolute;
+  top: 10px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color: #fff;
+  font-size: 20px;
+
+  /* 出现加个过渡 */
+  transition: all 0.5s;
+}
+
+.box-title-img {
+  width: 25%;
+}
+
+.box-title-item_1 {
+  top: 8.3%;
+  left: 1vw;
+  width: 23.2vw;
+  // border: #26fbff 1px solid;
+  opacity: 0;
+  animation: slide-from-left 0.5s ease-in-out forwards;
+  aspect-ratio: 5 / 3.4;
+}
+
+.box-title-item_2 {
+  top: 38.7%;
+  left: 1vw;
+  width: 23.2vw;
+  // border: #26fbff 1px solid;
+  opacity: 0;
+  animation: slide-from-left 0.5s ease-in-out 0.4s forwards;
+  aspect-ratio: 5 / 3.4;
+}
+
+.box-title-item_3 {
+  top: 69.1%;
+  left: 1vw;
+  width: 23.2vw;
+  // border: #26fbff 1px solid;
+  opacity: 0;
+  animation: slide-from-left 0.5s ease-in-out 0.8s forwards;
+  aspect-ratio: 5 / 3.4;
+}
+
+.box-title-item_4 {
+  top: 8.3%;
+  right: 1vw;
+  width: 23.2vw;
+  // border: #26fbff 1px solid;
+  opacity: 0;
+  animation: slide-from-right 0.5s ease-in-out forwards;
+  aspect-ratio: 5 / 3.4;
+}
+
+.box-title-item_5 {
+  top: 38.7%;
+  right: 1vw;
+  width: 23.2vw;
+  // border: #26fbff 1px solid;
+  opacity: 0;
+  animation: slide-from-right 0.5s ease-in-out 0.4s forwards;
+  aspect-ratio: 5 / 3.4;
+}
+
+.box-title-item_6 {
+  top: 69.1%;
+  right: 1vw;
+  width: 23.2vw;
+  // border: #26fbff 1px solid;
+  opacity: 0;
+  animation: slide-from-right 0.5s ease-in-out 0.8s forwards;
+  aspect-ratio: 5 / 3.4;
+}
+
+@keyframes slide-from-right {
+  from {
+    right: 0;
+    opacity: 0;
+  }
+
+  to {
+    right: 1.2vw;
+    opacity: 1;
+  }
+}
+
+@keyframes slide-from-left {
+  from {
+    left: 0;
+    opacity: 0;
+  }
+
+  to {
+    left: 1.1vw;
+    opacity: 1;
+  }
+}
+
+.box-title-item {
+  position: absolute;
+}
+
+.box-title-item_header {
+  height: 13%;
+  padding: 0.25vw 0 0 2vw;
+  font-weight: 900;
+  font-size: 15px;
+  font-family: tr-font, sans-serif;
+
+  span {
+    // text-shadow: 0.1rem 0.1rem 1.5rem #062768;
+    background-image: linear-gradient(to bottom, #fff 40%, #affcff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.box-title-item_body {
+  position: relative;
+  width: 100%;
+  height: 87%;
+}

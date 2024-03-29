@@ -1,0 +1,108 @@
+.md1-icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  box-sizing: border-box;
+  height: 50%;
+  padding: 15% 0;
+  flow: nowrap;
+}
+
+.md1-icon-item {
+  position: relative;
+  // flex: 1;
+  width: 23%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    // 覆盖，保持比例
+    object-fit: cover;
+  }
+
+  .md1-icon-item-title {
+    position: absolute;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 70%;
+    color: #e7fef9;
+    font-size: 9px;
+
+    .md1-icon-item-title_num1 {
+      font-size: 12px;
+      font-family: tr-font, sans-serif;
+      background-image: linear-gradient(to bottom, #9bdbfe 30%, #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .md1-icon-item-title_num2 {
+      font-size: 12px;
+      font-family: tr-font, sans-serif;
+      background-image: linear-gradient(to bottom, #9aedfd 30%, #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .md1-icon-item-title_num3 {
+      font-size: 12px;
+      font-family: tr-font, sans-serif;
+      background-image: linear-gradient(to bottom, #79daae 30%, #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .md1-icon-item-title_text {
+      font-family: '微软雅黑', sans-serif;
+    }
+  }
+}
+
+.md1-main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 50%;
+  background-color: rgba(25, 63, 126);
+
+  .md1-main-item {
+    display: flex;
+    flex-direction: row;
+    padding: 2%;
+
+    img {
+      width: 50%;
+      height: 50%;
+      object-fit: cover;
+    }
+
+    .md1-main-item-title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      font-family: tr-font, sans-serif;
+
+      .md1-main-item-title_text {
+        color: #e7fef9;
+        font-size: 14px;
+        font-family: '微软雅黑', sans-serif;
+      }
+
+      .md1-main-item-title_num1 {
+        color: #8dfeaa;
+      }
+
+      .md1-main-item-title_num2 {
+        color: #e0b55b;
+      }
+    }
+  }
+}
