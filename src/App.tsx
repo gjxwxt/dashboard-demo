@@ -16,6 +16,8 @@ function App() {
 
   const [isShow, setIsShow] = useState(false); // 是否显示模块
 
+  const boxContent = useRef<HTMLDivElement>(null); // 内容区域
+
   const onSecondPlay = () => {
     titleRef.current?.setAttribute('style', 'opacity: 1');
     setIsShow(true);
@@ -31,45 +33,68 @@ function App() {
   ];
 
   // 修改rem
-  function onResize() {
+  function initSize() {
     document.documentElement.style.fontSize = document.documentElement.clientWidth / 120 + 'px';
+    const currentRadio = document.documentElement.clientWidth / document.documentElement.clientHeight;
+
+    if (currentRadio > 1920 / 1080) {
+      boxContent.current && (boxContent.current.style.height = '100vh'); // 此时clientHeight = 100vh  x / clientHeight = 1920 / 1080
+      boxContent.current &&
+        (boxContent.current.style.width = `${(1920 / 1080) * document.documentElement.clientHeight}px`);
+    } else if (currentRadio < 1920 / 1080) {
+      boxContent.current && (boxContent.current.style.width = '100vw'); // 此时clientWidth = 100vw  clientWidth / x = 1920 / 1080
+      boxContent.current &&
+        (boxContent.current.style.height = `${(1080 / 1920) * document.documentElement.clientWidth}px`);
+    }
   }
 
   useEffect(() => {
     titleRef.current?.setAttribute('style', 'opacity: 0');
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
+    initSize();
+    window.addEventListener('resize', initSize);
+    // resetScreenSize();
+    return () => window.removeEventListener('resize', initSize);
   }, []);
 
   return (
-    <div className="container">
+    <div
+      className="container"
+      id="dataScreen"
+    >
       <SvgMap
         onReadyPlay={() => console.log('ready')}
         onSecondPlay={onSecondPlay}
       ></SvgMap>
       <div
-        className="box-title"
-        ref={titleRef}
+        className="box"
+        ref={boxContent}
       >
-        <img
-          className="box-title-img"
-          src={title}
-        ></img>
-      </div>
-      {isShow &&
-        modules.map((module, index) => (
+        <div className="box-content">
           <div
-            key={index}
-            className={`box-title-item box-title-item_${index + 1}`}
+            className="box-title"
+            ref={titleRef}
           >
-            <div className="box-title-item_header">
-              <span data-text={module.title}>{module.title}</span>
-            </div>
-            <div className="box-title-item_body">
-              <Suspense fallback={<div>Loading...</div>}>{module.body && <module.body />}</Suspense>
-            </div>
+            <img
+              className="box-title-img"
+              src={title}
+            ></img>
           </div>
-        ))}
+          {isShow &&
+            modules.map((module, index) => (
+              <div
+                key={index}
+                className={`box-title-item box-title-item_${index + 1}`}
+              >
+                <div className="box-title-item_header">
+                  <span data-text={module.title}>{module.title}</span>
+                </div>
+                <div className="box-title-item_body">
+                  <Suspense fallback={<div>Loading...</div>}>{module.body && <module.body />}</Suspense>
+                </div>
+              </div>
+            ))}
+        </div>
+      </div>
     </div>
   );
 }

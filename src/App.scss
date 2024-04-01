@@ -4,12 +4,22 @@
 }
 
 .box {
-  position: relative;
+  position: absolute;
+  z-index: 2000;
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 100%;
+  pointer-events: none;
+  // width: 100vw;
+  // height: 100vh;
+}
+
+.box-content {
+  position: absolute;
+  width: 100%;
+  // 保持比例
   aspect-ratio: 1920 / 1080;
+  background-color: rgba(0, 0, 0, 0%);
 }
 
 .box-title {
@@ -31,8 +41,7 @@
 
 .box-title-item_1 {
   top: 8.3%;
-  left: 1vw;
-  width: 23.2vw;
+  width: 23.36%;
   // border: #26fbff 1px solid;
   opacity: 0;
   animation: slide-from-left 0.5s ease-in-out forwards;
@@ -41,8 +50,7 @@
 
 .box-title-item_2 {
   top: 38.7%;
-  left: 1vw;
-  width: 23.2vw;
+  width: 23.36%;
   // border: #26fbff 1px solid;
   opacity: 0;
   animation: slide-from-left 0.5s ease-in-out 0.4s forwards;
@@ -51,8 +59,7 @@
 
 .box-title-item_3 {
   top: 69.1%;
-  left: 1vw;
-  width: 23.2vw;
+  width: 23.36%;
   // border: #26fbff 1px solid;
   opacity: 0;
   animation: slide-from-left 0.5s ease-in-out 0.8s forwards;
@@ -61,8 +68,7 @@
 
 .box-title-item_4 {
   top: 8.3%;
-  right: 1vw;
-  width: 23.2vw;
+  width: 23.36%;
   // border: #26fbff 1px solid;
   opacity: 0;
   animation: slide-from-right 0.5s ease-in-out forwards;
@@ -71,8 +77,7 @@
 
 .box-title-item_5 {
   top: 38.7%;
-  right: 1vw;
-  width: 23.2vw;
+  width: 23.36%;
   // border: #26fbff 1px solid;
   opacity: 0;
   animation: slide-from-right 0.5s ease-in-out 0.4s forwards;
@@ -81,8 +86,7 @@
 
 .box-title-item_6 {
   top: 69.1%;
-  right: 1vw;
-  width: 23.2vw;
+  width: 23.36%;
   // border: #26fbff 1px solid;
   opacity: 0;
   animation: slide-from-right 0.5s ease-in-out 0.8s forwards;
@@ -96,7 +100,7 @@
   }
 
   to {
-    right: 1.2vw;
+    right: 1.1%;
     opacity: 1;
   }
 }
@@ -108,20 +112,21 @@
   }
 
   to {
-    left: 1.1vw;
+    left: 1.1%;
     opacity: 1;
   }
 }
 
 .box-title-item {
   position: absolute;
+  pointer-events: auto;
 }
 
 .box-title-item_header {
   height: 13%;
-  padding: 0.25vw 0 0 2vw;
+  padding: 0.4rem 0 0 3rem;
   font-weight: 900;
-  font-size: 15px;
+  font-size: 1.2rem;
   font-family: tr-font, sans-serif;
 
   span {

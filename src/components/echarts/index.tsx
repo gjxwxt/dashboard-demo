@@ -19,7 +19,7 @@ const EchartsComponent: React.FC<EchartsProps> = ({ options }) => {
 
   //创建一个resize事件
   const echartsResize = () => {
-    echarts.init(chartRef.current).resize();
+    chartRef.current && echarts.init(chartRef.current).resize();
   };
 
   //页面卸载，销毁监听
