@@ -1,7 +1,7 @@
 import EchartsComponent from '@/components/echarts';
 import React from 'react';
 
-const MyComponent: React.FC = () => {
+const Module05: React.FC = () => {
   const yList = [61, 86, 67, 43, 52, 70];
   const colors = [
     {
@@ -325,10 +325,8 @@ const MyComponent: React.FC = () => {
         lineHeight: 24,
         fontFamily: 'siyuan',
         // fontStyle: 'italic', // 设置文字斜体
-        textStyle: {
-          //改变刻度字体样式
-          color: '#fff'
-        }
+        //改变刻度字体样式
+        color: '#fff'
       },
       axisTick: {
         show: false
@@ -349,10 +347,8 @@ const MyComponent: React.FC = () => {
       axisLabel: {
         show: true,
         margin: 10,
-        textStyle: {
-          color: '#fff',
-          fontSize: 10
-        }
+        color: '#fff',
+        fontSize: 10
       },
       axisTick: {
         //y轴刻度线
@@ -372,11 +368,9 @@ const MyComponent: React.FC = () => {
           color: 'none'
         },
         itemStyle: {
-          normal: {
-            color: function (params: { dataIndex: number }) {
-              //console.log(params)
-              return colors[params.dataIndex % 7];
-            }
+          color: function (params: { dataIndex: number }) {
+            //console.log(params)
+            return colors[params.dataIndex % 7];
           }
         },
         label: {
@@ -398,10 +392,8 @@ const MyComponent: React.FC = () => {
         symbolOffset: [0, '50%'],
         symbolSize: [20, 5],
         itemStyle: {
-          normal: {
-            color: function (params: { dataIndex: number }) {
-              return colors[params.dataIndex % 7];
-            }
+          color: function (params: { dataIndex: number }) {
+            return colors[params.dataIndex % 7];
           }
         }
       },
@@ -414,11 +406,9 @@ const MyComponent: React.FC = () => {
         symbolOffset: [0, '-50%'],
         symbolSize: [20, 20 * 0.25],
         itemStyle: {
-          normal: {
-            borderWidth: 0,
-            color: function (params: { dataIndex: number }) {
-              return colors[params.dataIndex % 7].colorStops[0].color;
-            }
+          borderWidth: 0,
+          color: function (params: { dataIndex: number }) {
+            return colors[params.dataIndex % 7].colorStops[0].color;
           }
         }
       }
@@ -432,4 +422,4 @@ const MyComponent: React.FC = () => {
   );
 };
 
-export default MyComponent;
+export default Module05;

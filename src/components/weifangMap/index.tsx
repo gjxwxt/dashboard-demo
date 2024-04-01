@@ -1,4 +1,4 @@
-import '@/components/weifangMap/map.css';
+import '@/components/weifangMap/index.css';
 import React, { useEffect, useRef, useState } from 'react';
 
 import firstVideo from './video/duanluo1.mp4';
@@ -83,7 +83,7 @@ const SvgMap: React.FC<SvgMapOptions> = ({ onSecondPlay, onReadyPlay }) => {
   };
 
   return (
-    <div className="container">
+    <>
       <video
         ref={videoRef}
         className={`banner-inner-video ${!playVideoTag ? 'video-hide' : ''}`}
@@ -101,7 +101,7 @@ const SvgMap: React.FC<SvgMapOptions> = ({ onSecondPlay, onReadyPlay }) => {
       ></video>
       <div
         className="map-svg-box"
-        style={{ display: !playVideoTag ? 'block' : 'none' }}
+        style={{ opacity: !playVideoTag ? '1' : '0' }}
         ref={svgRef}
       >
         <svg
@@ -690,14 +690,12 @@ const SvgMap: React.FC<SvgMapOptions> = ({ onSecondPlay, onReadyPlay }) => {
           />
         </svg>
       </div>
-
       {loading && (
         <div className="loading">
           <div className="loading-content"></div>
-          <div className="loading-text">加载中...</div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

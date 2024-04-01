@@ -1,6 +1,6 @@
 import EchartsComponent from '@/components/echarts';
 
-const MyComponent: React.FC = () => {
+const Module02: React.FC = () => {
   const options = {
     label: {
       // {a|{c}}{l|个}\n{per|{b}}\n{sq|一}{per|占比}{b|{d}%}
@@ -143,4 +143,4 @@ const MyComponent: React.FC = () => {
   );
 };
 
-export default MyComponent;
+export default Module02;

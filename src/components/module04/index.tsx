@@ -1,7 +1,7 @@
 import EchartsComponent from '@/components/echarts';
 import React from 'react';
 
-const MyComponent: React.FC = () => {
+const Module04: React.FC = () => {
   const options = {
     backgroundColor: 'rgba(0, 0, 0, 0)',
     grid: {
@@ -61,10 +61,8 @@ const MyComponent: React.FC = () => {
         axisLabel: {
           show: true,
           margin: 10,
-          textStyle: {
-            color: '#fff',
-            fontSize: 10
-          }
+          color: '#fff',
+          fontSize: 10
         },
         axisTick: {
           show: false
@@ -79,14 +77,9 @@ const MyComponent: React.FC = () => {
         stack: '总量',
         symbolSize: 5,
         showSymbol: false,
-        itemStyle: {
-          normal: {
-            color: '#23D0C4',
-            lineStyle: {
-              color: '#23D0C4',
-              width: 2
-            }
-          }
+        lineStyle: {
+          color: '#23D0C4',
+          width: 2
         },
         areaStyle: {
           color: {
@@ -120,4 +113,4 @@ const MyComponent: React.FC = () => {
   );
 };
 
-export default MyComponent;
+export default Module04;
