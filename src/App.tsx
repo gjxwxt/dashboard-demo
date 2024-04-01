@@ -1,4 +1,3 @@
-// import { useState } from 'react';
 import title from '@/assets/title.png';
 import Module01 from '@/components/module01';
 import Module02 from '@/components/module02';
@@ -17,18 +16,20 @@ function App() {
   const [isShow, setIsShow] = useState(false); // 是否显示模块
 
   const boxContent = useRef<HTMLDivElement>(null); // 内容区域
+  const moduleContent = useRef<HTMLDivElement>(null); // 模块内容区域
 
   const onSecondPlay = () => {
     titleRef.current?.setAttribute('style', 'opacity: 1');
+    moduleContent.current?.setAttribute('style', 'display: block');
     setIsShow(true);
   };
 
   const modules = [
     { title: '大屏可视化小模块标题01', body: Module01 },
-    { title: '大屏可视化小模块标题02', body: Module02 },
+    { title: '大屏可视化小模块标题02', body: Module02, isEcharts: true },
     { title: '大屏可视化小模块标题03', body: Module03 },
-    { title: '大屏可视化小模块标题04', body: Module04 },
-    { title: '大屏可视化小模块标题05', body: Module05 },
+    { title: '大屏可视化小模块标题04', body: Module04, isEcharts: true },
+    { title: '大屏可视化小模块标题05', body: Module05, isEcharts: true },
     { title: '大屏可视化小模块标题06', body: Module06 }
   ];
 
@@ -50,6 +51,7 @@ function App() {
 
   useEffect(() => {
     titleRef.current?.setAttribute('style', 'opacity: 0');
+    moduleContent.current?.setAttribute('style', 'display: none');
     initSize();
     window.addEventListener('resize', initSize);
     // resetScreenSize();
@@ -69,7 +71,10 @@ function App() {
         className="box"
         ref={boxContent}
       >
-        <div className="box-content">
+        <div
+          className="box-content"
+          ref={moduleContent}
+        >
           <div
             className="box-title"
             ref={titleRef}
@@ -79,20 +84,22 @@ function App() {
               src={title}
             ></img>
           </div>
-          {isShow &&
-            modules.map((module, index) => (
-              <div
-                key={index}
-                className={`box-title-item box-title-item_${index + 1}`}
-              >
-                <div className="box-title-item_header">
-                  <span data-text={module.title}>{module.title}</span>
+          {modules.map(
+            (module, index) =>
+              (!module.isEcharts || isShow) && (
+                <div
+                  key={index}
+                  className={`box-title-item box-title-item_${index + 1}`}
+                >
+                  <div className="box-title-item_header">
+                    <span data-text={module.title}>{module.title}</span>
+                  </div>
+                  <div className="box-title-item_body">
+                    <Suspense fallback={<div>Loading...</div>}>{module.body && <module.body />}</Suspense>
+                  </div>
                 </div>
-                <div className="box-title-item_body">
-                  <Suspense fallback={<div>Loading...</div>}>{module.body && <module.body />}</Suspense>
-                </div>
-              </div>
-            ))}
+              )
+          )}
         </div>
       </div>
     </div>
