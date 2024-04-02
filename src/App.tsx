@@ -23,11 +23,14 @@ function App() {
   const boxContent = useRef<HTMLDivElement>(null); // 内容区域
   const moduleContent = useRef<HTMLDivElement>(null); // 模块内容区域
 
+  const onReadyPlay = () => {
+    initSize();
+    setIconShow(true);
+  };
+
   const onSecondPlay = () => {
     titleRef.current?.setAttribute('style', 'opacity: 1');
     moduleContent.current?.setAttribute('style', 'display: block');
-    initSize();
-
     setIsShow(true);
   };
 
@@ -58,7 +61,7 @@ function App() {
   return (
     <div className="container">
       <SvgMap
-        onReadyPlay={() => setIconShow(true)}
+        onReadyPlay={onReadyPlay}
         onSecondPlay={onSecondPlay}
       ></SvgMap>
       <div
