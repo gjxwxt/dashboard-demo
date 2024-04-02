@@ -19,12 +19,6 @@ video {
   height: 100vh;
 }
 
-.map-svg {
-  width: 100%;
-  height: 100%;
-  transform: scale(0.685) translate(1.7%, -5.5%);
-}
-
 .map-svg-box {
   position: absolute;
   z-index: 2000;
