@@ -18,6 +18,7 @@ function App() {
 
   const [isShow, setIsShow] = useState(false); // 是否显示模块
   const [isFullscreen, { toggleFullscreen }] = useFullscreen(document.getElementsByTagName('body')[0]); // 是否全屏
+  const [iconShow, setIconShow] = useState(false); // 是否显示顶部icon
 
   const boxContent = useRef<HTMLDivElement>(null); // 内容区域
   const moduleContent = useRef<HTMLDivElement>(null); // 模块内容区域
@@ -57,7 +58,7 @@ function App() {
   return (
     <div className="container">
       <SvgMap
-        onReadyPlay={() => console.log('ready')}
+        onReadyPlay={() => setIconShow(true)}
         onSecondPlay={onSecondPlay}
       ></SvgMap>
       <div
@@ -94,16 +95,17 @@ function App() {
             </div>
           ))}
         </div>
-
-        <div
-          className="box-fullscreen"
-          onClick={toggleFullscreen}
-        >
-          <SvgIcon
-            name={isFullscreen ? 'fullscreen-exit' : 'fullscreen'}
-            size="24px"
-          ></SvgIcon>
-        </div>
+        {iconShow && (
+          <div
+            className="box-fullscreen"
+            onClick={toggleFullscreen}
+          >
+            <SvgIcon
+              name={isFullscreen ? 'fullscreen-exit' : 'fullscreen'}
+              size="24px"
+            ></SvgIcon>
+          </div>
+        )}
       </div>
     </div>
   );
