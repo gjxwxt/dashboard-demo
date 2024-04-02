@@ -29,8 +29,7 @@
 .box-content {
   position: absolute;
   width: 100%;
-  // 保持比例
-  aspect-ratio: 1920 / 1080;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0%);
 }
 
@@ -53,56 +52,44 @@
 
 .box-title-item_1 {
   top: 8.3%;
-  width: 23.36%;
   // border: #26fbff 1px solid;
   opacity: 0;
   animation: slide-from-left 0.5s ease-in-out forwards;
-  aspect-ratio: 5 / 3.4;
 }
 
 .box-title-item_2 {
   top: 38.7%;
-  width: 23.36%;
   // border: #26fbff 1px solid;
   opacity: 0;
   animation: slide-from-left 0.5s ease-in-out 0.4s forwards;
-  aspect-ratio: 5 / 3.4;
 }
 
 .box-title-item_3 {
   top: 69.1%;
-  width: 23.36%;
   // border: #26fbff 1px solid;
   opacity: 0;
   animation: slide-from-left 0.5s ease-in-out 0.8s forwards;
-  aspect-ratio: 5 / 3.4;
 }
 
 .box-title-item_4 {
   top: 8.3%;
-  width: 23.36%;
   // border: #26fbff 1px solid;
   opacity: 0;
   animation: slide-from-right 0.5s ease-in-out forwards;
-  aspect-ratio: 5 / 3.4;
 }
 
 .box-title-item_5 {
   top: 38.7%;
-  width: 23.36%;
   // border: #26fbff 1px solid;
   opacity: 0;
   animation: slide-from-right 0.5s ease-in-out 0.4s forwards;
-  aspect-ratio: 5 / 3.4;
 }
 
 .box-title-item_6 {
   top: 69.1%;
-  width: 23.36%;
   // border: #26fbff 1px solid;
   opacity: 0;
   animation: slide-from-right 0.5s ease-in-out 0.8s forwards;
-  aspect-ratio: 5 / 3.4;
 }
 
 @keyframes slide-from-right {
@@ -141,6 +128,8 @@
 
 .box-title-item {
   position: absolute;
+  width: 23.36%;
+  height: 27.5%;
   pointer-events: auto;
 }
 

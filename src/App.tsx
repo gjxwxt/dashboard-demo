@@ -9,6 +9,7 @@ import SvgIcon from '@/components/svg';
 import { useFullscreen } from 'ahooks';
 
 import SvgMap from '@/components/weifangMap';
+import { setSizeByScale } from '@/utils';
 import { Suspense, useEffect, useRef, useState } from 'react';
 import './App.scss';
 
@@ -24,6 +25,8 @@ function App() {
   const onSecondPlay = () => {
     titleRef.current?.setAttribute('style', 'opacity: 1');
     moduleContent.current?.setAttribute('style', 'display: block');
+    initSize();
+
     setIsShow(true);
   };
 
@@ -36,31 +39,16 @@ function App() {
     { title: '大屏可视化小模块标题06', body: Module06 }
   ];
 
-  // 修改rem
   function initSize() {
+    // 修改rem
     document.documentElement.style.fontSize = document.documentElement.clientWidth / 120 + 'px';
-    const currentRadio = document.documentElement.clientWidth / document.documentElement.clientHeight;
-
-    if (currentRadio > 1920 / 1080) {
-      boxContent.current && (boxContent.current.style.height = '100vh'); // 此时clientHeight = 100vh  x / clientHeight = 1920 / 1080
-      boxContent.current &&
-        (boxContent.current.style.width = `${(1920 / 1080) * document.documentElement.clientHeight}px`);
-    } else if (currentRadio < 1920 / 1080) {
-      boxContent.current && (boxContent.current.style.width = '100vw'); // 此时clientWidth = 100vw  clientWidth / x = 1920 / 1080
-      boxContent.current &&
-        (boxContent.current.style.height = `${(1080 / 1920) * document.documentElement.clientWidth}px`);
-    } else {
-      boxContent.current && (boxContent.current.style.width = '100vw');
-      boxContent.current && (boxContent.current.style.height = '100vh');
-    }
-
-    // resetScreenSize();
+    // 设置模块内容区域大小，为了实现根据当前浏览器视口比例，来实现比例不变，尽可能占满屏幕
+    boxContent.current && setSizeByScale(boxContent.current);
   }
 
   useEffect(() => {
     titleRef.current?.setAttribute('style', 'opacity: 0');
     moduleContent.current?.setAttribute('style', 'display: none');
-    initSize();
     window.addEventListener('resize', initSize);
     // resetScreenSize();
     return () => window.removeEventListener('resize', initSize);
@@ -89,22 +77,22 @@ function App() {
               src={title}
             ></img>
           </div>
-          {modules.map(
-            (module, index) =>
-              (!module.isEcharts || isShow) && (
-                <div
-                  key={index}
-                  className={`box-title-item box-title-item_${index + 1}`}
-                >
-                  <div className="box-title-item_header">
-                    <span data-text={module.title}>{module.title}</span>
-                  </div>
-                  <div className="box-title-item_body">
-                    <Suspense fallback={<div>Loading...</div>}>{module.body && <module.body />}</Suspense>
-                  </div>
-                </div>
-              )
-          )}
+          {modules.map((module, index) => (
+            <div
+              key={index}
+              className={`box-title-item box-title-item_${index + 1}`}
+            >
+              <div className="box-title-item_header">
+                <span data-text={module.title}>{module.title}</span>
+              </div>
+              <div className="box-title-item_body">
+                {/* 如果不是echarts，先渲染出来是为了提前加载静态资源，避免加载时出现跳动 */}
+                {(!module.isEcharts || isShow) && (
+                  <Suspense fallback={<div>Loading...</div>}>{module.body && <module.body />}</Suspense>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
 
         <div

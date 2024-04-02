@@ -1,6 +1,7 @@
 import '@/components/weifangMap/index.css';
 import React, { useEffect, useRef, useState } from 'react';
 
+import { setSizeByScale } from '@/utils';
 import firstVideo from './video/duanluo1.mp4';
 import secondVideo from './video/duanluo2.mp4';
 
@@ -21,7 +22,13 @@ const SvgMap: React.FC<SvgMapOptions> = ({ onSecondPlay, onReadyPlay }) => {
   const svgRef = useRef<HTMLDivElement>(null); // 地图svg
   const svgNameRef = useRef<HTMLDivElement>(null); // 地图标记svg
 
-  // 第一次渲染
+  // 修改svgRef的宽高，并将svgNameRef的宽高也等于它
+  const initSize = () => {
+    svgRef.current && setSizeByScale(svgRef.current);
+    svgNameRef.current && setSizeByScale(svgNameRef.current);
+  };
+
+  // 先加载视频等待、svg添加鼠标事件
   useEffect(() => {
     const playVideo = () => {
       if (videoRef.current) {
@@ -64,8 +71,12 @@ const SvgMap: React.FC<SvgMapOptions> = ({ onSecondPlay, onReadyPlay }) => {
     setLoading(true);
     heightLight();
     playVideo();
+    initSize();
+    window.addEventListener('resize', initSize);
+    return () => window.removeEventListener('resize', initSize);
   }, []);
 
+  // 可以开始播放后开始播放
   useEffect(() => {
     // 开始播放
     if (video1CanPlay && video2CanPlay) {
