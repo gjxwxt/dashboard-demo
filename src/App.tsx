@@ -5,6 +5,8 @@ import Module03 from '@/components/module03';
 import Module04 from '@/components/module04';
 import Module05 from '@/components/module05';
 import Module06 from '@/components/module06';
+import SvgIcon from '@/components/svg';
+import { useFullscreen } from 'ahooks';
 
 import SvgMap from '@/components/weifangMap';
 import { Suspense, useEffect, useRef, useState } from 'react';
@@ -14,6 +16,7 @@ function App() {
   const titleRef = useRef<HTMLDivElement>(null); // header图
 
   const [isShow, setIsShow] = useState(false); // 是否显示模块
+  const [isFullscreen, { toggleFullscreen }] = useFullscreen(document.getElementsByTagName('body')[0]); // 是否全屏
 
   const boxContent = useRef<HTMLDivElement>(null); // 内容区域
   const moduleContent = useRef<HTMLDivElement>(null); // 模块内容区域
@@ -46,7 +49,12 @@ function App() {
       boxContent.current && (boxContent.current.style.width = '100vw'); // 此时clientWidth = 100vw  clientWidth / x = 1920 / 1080
       boxContent.current &&
         (boxContent.current.style.height = `${(1080 / 1920) * document.documentElement.clientWidth}px`);
+    } else {
+      boxContent.current && (boxContent.current.style.width = '100vw');
+      boxContent.current && (boxContent.current.style.height = '100vh');
     }
+
+    // resetScreenSize();
   }
 
   useEffect(() => {
@@ -59,10 +67,7 @@ function App() {
   }, []);
 
   return (
-    <div
-      className="container"
-      id="dataScreen"
-    >
+    <div className="container">
       <SvgMap
         onReadyPlay={() => console.log('ready')}
         onSecondPlay={onSecondPlay}
@@ -100,6 +105,16 @@ function App() {
                 </div>
               )
           )}
+        </div>
+
+        <div
+          className="box-fullscreen"
+          onClick={toggleFullscreen}
+        >
+          <SvgIcon
+            name={isFullscreen ? 'fullscreen-exit' : 'fullscreen'}
+            size="24px"
+          ></SvgIcon>
         </div>
       </div>
     </div>
