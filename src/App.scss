@@ -13,17 +13,35 @@
 }
 
 .box-fullscreen {
-  // 一个全屏的按钮
   position: absolute;
   top: 2%;
-  right: 0.3%;
+  right: 1.8%;
   z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 50px;
   height: 50px;
+  background: linear-gradient(
+    180deg,
+    rgb(20, 77, 225) 0%,
+    rgb(29, 117, 223) 30%,
+    rgb(65, 174, 213) 60%,
+    rgb(74, 187, 210) 80%,
+    rgb(73, 199, 209) 100%
+  );
   border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 50%);
   cursor: pointer;
-  // animation: fade-in 1s ease-in 0.3s;
   pointer-events: auto;
+
+  svg {
+    transition: transform 0.3s ease; // 添加过渡效果，使旋转更加平滑
+
+    &:hover {
+      transform: rotate(90deg); // 在鼠标悬停时旋转180度
+    }
+  }
 }
 
 .box-content {
@@ -130,7 +148,7 @@
   position: absolute;
   width: 23.36%;
   height: 28.5%;
-  border: solid 1px rgba(29, 68, 129, 50%);
+  // border: solid 1px rgba(29, 68, 129, 50%);
   pointer-events: auto;
 }
 

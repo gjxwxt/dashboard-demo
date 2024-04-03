@@ -17,13 +17,10 @@ export default function SvgIcon(props: propsInterface) {
   }, [profix, props.name]);
 
   return (
-    <svg
-      style={{ height: size, width: size }}
-      fill={color}
-    >
+    <svg style={{ height: size, width: size }}>
       <use
         href={iconName}
-        fill="currentColor"
+        fill={color}
       />
     </svg>
   );

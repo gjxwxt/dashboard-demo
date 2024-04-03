@@ -191,7 +191,8 @@ function App() {
           >
             <SvgIcon
               name={isFullscreen ? 'fullscreen-exit' : 'fullscreen'}
-              size="24px"
+              size="35px"
+              color="rgb(255, 255, 255)"
             ></SvgIcon>
           </div>
         )}
