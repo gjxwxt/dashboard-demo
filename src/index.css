@@ -4,6 +4,7 @@ body {
   height: 100%;
   overflow: hidden;
   place-items: center;
+  background-color: rgb(14, 46, 114);
 }
 
 html {
