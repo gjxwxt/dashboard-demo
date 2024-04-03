@@ -39,13 +39,13 @@ const SvgMap: React.FC<SvgMapOptions> = ({
   useEffect(() => {
     const playVideo = () => {
       if (videoRef.current) {
-        videoRef.current.oncanplay = () => {
+        videoRef.current.oncanplaythrough = () => {
           setVideo1CanPlay(true);
           videoRef.current?.pause();
         };
       }
       if (videoBacRef.current) {
-        videoBacRef.current.oncanplay = () => {
+        videoBacRef.current.oncanplaythrough = () => {
           setVideo2CanPlay(true);
           videoBacRef.current?.pause();
         };
@@ -64,7 +64,8 @@ const SvgMap: React.FC<SvgMapOptions> = ({
       if (svg) {
         const paths = svg.querySelectorAll('path');
         paths.forEach((path: SVGPathElement) => {
-          path.setAttribute('style', 'cursor: pointer; fill: rgba(255,255,255,0)');
+          path.style.cursor = 'pointer';
+          path.style.fill = 'rgba(255,255,255,0)';
           path.onmouseover = () => {
             pathHoverStyle &&
               Object.keys(pathHoverStyle).forEach(key => {
@@ -73,7 +74,7 @@ const SvgMap: React.FC<SvgMapOptions> = ({
               });
           };
           path.onmouseleave = () => {
-            path.setAttribute('style', 'fill: rgba(255,255,255,0)');
+            path.style.fill = 'rgba(255,255,255,0)';
           };
           path.onclick = () => onPathClick?.(path);
         });
@@ -121,15 +122,13 @@ const SvgMap: React.FC<SvgMapOptions> = ({
         src={videoList[1]}
       ></video>
       <div
-        className="map-svg-box"
-        style={{ opacity: !playVideoTag ? '1' : '0' }}
+        className={`map-svg-box ${playVideoTag ? 'video-hide' : ''}`}
         ref={svgRef}
       >
         {children}
       </div>
       <div
-        className="map-svg-box map-svg-box-name"
-        style={{ display: !playVideoTag ? 'block' : 'none' }}
+        className={`map-svg-box  map-svg-box-name ${playVideoTag ? 'animation-paused' : ''}`}
         ref={svgNameRef}
       >
         <svg

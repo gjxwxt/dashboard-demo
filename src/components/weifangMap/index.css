@@ -28,9 +28,15 @@ video {
 }
 
 .map-svg-box-name {
+  animation: fade-in 1s ease-in;
+
   /* 设置出场动画 */
-  animation: fade-in 1s;
   pointer-events: none;
+}
+
+.animation-paused {
+  z-index: -1;
+  animation-play-state: paused;
 }
 
 .loading {
