@@ -6,7 +6,7 @@ const Module04: React.FC = () => {
     backgroundColor: 'rgba(0, 0, 0, 0)',
     grid: {
       left: '2%',
-      right: '2%',
+      right: '5%',
       top: '10%',
       bottom: '5%',
       containLabel: true
@@ -29,7 +29,7 @@ const Module04: React.FC = () => {
         },
         axisLabel: {
           color: '#fff',
-          fontSize: 10
+          fontSize: 12
         },
         splitLine: {
           show: false
@@ -62,7 +62,7 @@ const Module04: React.FC = () => {
           show: true,
           margin: 10,
           color: '#fff',
-          fontSize: 10
+          fontSize: 12
         },
         axisTick: {
           show: false

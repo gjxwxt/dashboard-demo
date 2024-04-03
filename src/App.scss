@@ -129,13 +129,17 @@
 .box-title-item {
   position: absolute;
   width: 23.36%;
-  height: 27.5%;
+  height: 28.5%;
+  border: solid 1px rgba(29, 68, 129, 50%);
   pointer-events: auto;
 }
 
 .box-title-item_header {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
   height: 13%;
-  padding: 0.4rem 0 0 3rem;
+  padding: 0 0 0 12%;
   font-weight: 900;
   font-size: 1.2rem;
   font-family: tr-font, sans-serif;

@@ -306,7 +306,7 @@ const Module05: React.FC = () => {
     backgroundColor: 'rgba(0,0,0,0)',
     grid: {
       left: '2%',
-      right: '2%',
+      right: '5%',
       top: '10%',
       bottom: '5%',
       containLabel: true
@@ -321,7 +321,7 @@ const Module05: React.FC = () => {
       type: 'category',
       axisLabel: {
         // rotate: -30, // 设置文字旋转
-        fontSize: 10,
+        fontSize: 12,
         lineHeight: 24,
         fontFamily: 'siyuan',
         // fontStyle: 'italic', // 设置文字斜体
@@ -348,7 +348,7 @@ const Module05: React.FC = () => {
         show: true,
         margin: 10,
         color: '#fff',
-        fontSize: 10
+        fontSize: 12
       },
       axisTick: {
         //y轴刻度线
