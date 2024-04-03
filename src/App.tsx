@@ -1,4 +1,4 @@
-import title from '@/assets/title.png';
+import title from '@/assets/image/title.png';
 import Module01 from '@/components/module01';
 import Module02 from '@/components/module02';
 import Module03 from '@/components/module03';

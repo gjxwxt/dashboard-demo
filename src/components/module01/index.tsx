@@ -1,8 +1,8 @@
-import TopIcon1 from '@/assets/icon/01.png';
-import TopIcon2 from '@/assets/icon/02.png';
-import TopIcon3 from '@/assets/icon/03.png';
-import footerIcon2 from '@/assets/icon/a.png';
-import footerIcon1 from '@/assets/icon/b.png';
+import TopIcon1 from '@/assets/image/01.png';
+import TopIcon2 from '@/assets/image/02.png';
+import TopIcon3 from '@/assets/image/03.png';
+import footerIcon2 from '@/assets/image/a.png';
+import footerIcon1 from '@/assets/image/b.png';
 import React from 'react';
 import './index.scss';
 
