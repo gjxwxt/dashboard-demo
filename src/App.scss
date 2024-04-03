@@ -35,13 +35,13 @@
   cursor: pointer;
   pointer-events: auto;
 
-  svg {
-    transition: transform 0.3s ease; // 添加过渡效果，使旋转更加平滑
+  // svg {
+  //   transition: transform 0.3s ease; // 添加过渡效果，使旋转更加平滑
 
-    &:hover {
-      transform: rotate(90deg); // 在鼠标悬停时旋转180度
-    }
-  }
+  //   &:hover {
+  //     transform: rotate(90deg); // 在鼠标悬停时旋转180度
+  //   }
+  // }
 }
 
 .box-content {
